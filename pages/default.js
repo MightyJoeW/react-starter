@@ -1,4 +1,7 @@
+//External Dependencies
 import React from 'react'
+
+//Internal Dependencies
 import Router from 'next/router'
 import bucket from '../config'
 import Page from '../components/page'
@@ -6,6 +9,8 @@ import PageNotFound from '../components/404'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import Nav from '../components/nav'
+
+//Component Definition
 class DefaultPage extends React.Component {
   static async getInitialProps({ req, query }) {
     let slug = query.slug
@@ -15,7 +20,7 @@ class DefaultPage extends React.Component {
     try {
       const res = await bucket.getObject({ slug })
       page = res.object
-    } catch(e) {
+    } catch (e) {
       page = {
         title: 'Page not found',
         component: '404'
@@ -23,22 +28,22 @@ class DefaultPage extends React.Component {
     }
     return { page }
   }
-	render() {
+  render() {
     return (
       <div>
-        <Header page={ this.props.page }/>
+        <Header page={this.props.page} />
         <div className="main">
-          {this.props.page.component && this.props.page.component==='404' ? (
+          {this.props.page.component && this.props.page.component === '404' ? (
             <PageNotFound />
           ) : (
-            <Page page={this.props.page} />
-          )}
+              <Page page={this.props.page} />
+            )}
           <Nav />
         </div>
         <Footer />
       </div>
-		);
-	}
+    );
+  }
 }
 
 export default DefaultPage
