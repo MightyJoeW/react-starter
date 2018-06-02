@@ -11,7 +11,7 @@ import Footer from '../components/footer'
 import Nav from '../components/nav'
 
 //Component Definition
-class DefaultPage extends React.Component {
+class Home extends React.Component {
   static async getInitialProps({ req, query }) {
     let slug = query.slug
     if (!slug)
@@ -29,14 +29,18 @@ class DefaultPage extends React.Component {
     return { page }
   }
   render() {
+    const {
+      page
+    } = this.props;
+
     return (
       <div>
-        <Header page={this.props.page} />
+        <Header page={page} />
         <div className="main">
-          {this.props.page.component && this.props.page.component === '404' ? (
+          {page.component && page.component === '404' ? (
             <PageNotFound />
           ) : (
-              <Page page={this.props.page} />
+              <Page page={page} />
             )}
           <Nav />
         </div>
@@ -46,4 +50,4 @@ class DefaultPage extends React.Component {
   }
 }
 
-export default DefaultPage
+export default Home
