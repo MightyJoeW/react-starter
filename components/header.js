@@ -1,11 +1,13 @@
+//Internal Dependencies
 import Head from 'next/head'
 
+//Component Definition
 export default ({ page }) =>
-  <div>
-    <Head>
-      <title>{ page.title }</title>
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      <style>
+	<div>
+		<Head>
+			<title>{page.title}</title>
+			<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+			<style>
 				{`html {
 				  font-family: sans-serif;
 				}
@@ -33,7 +35,7 @@ export default ({ page }) =>
 					color: #fff;
 					text-decoration: none;
 				}`}
-				</style>
-    </Head>
-    <div className="hero"><h1><a href="/">Cosmic JS React Starter</a></h1></div>
-  </div>
+			</style>
+		</Head>
+		<div className="hero"><h1><a href="/">Games and Keys</a></h1></div>
+	</div>
